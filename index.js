@@ -1,4 +1,4 @@
 console.log("welcome to Backend !!");
-const os = require("os");
+const today = new Date();
 
-console.log(os.version());
+console.log(today.toLocaleDateString());
