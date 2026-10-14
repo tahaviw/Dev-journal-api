@@ -1,0 +1,2 @@
+Day 1: Set up my Node.js project.
+Day 2: Learning to read files with Node.js.
