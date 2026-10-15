@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { v4: uuid } = require("uuid"); // similar to import v4 as uuid from "uuid"
 
 console.log("welcome to Backend !!");
 const today = new Date();
@@ -17,3 +18,5 @@ process.on("uncaughtException", (err) => {
   console.error(`There was an uncaught error: ${err}`);
   process.exit(1); //Stop the program
 });
+
+console.log(uuid());
