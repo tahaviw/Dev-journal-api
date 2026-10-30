@@ -17,7 +17,7 @@ fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => 
 },
 );
 
-fs.appendFile(path.join(__dirname, "data", "Reply.txt"), " This Is the Reply", (err) => {
+fs.appendFile(path.join(__dirname, "data", "Reply.txt"), `\nThis Is the Reply`, (err) => {
   if (err) throw err;
   console.log("Writing Complete")
 })
@@ -32,7 +32,7 @@ process.on("uncaughtException", (err) => {
 
 // Output
 
-console.log("     Welcome to Backend !!");
+console.log("     Welcome to Backend !");
 console.log("     ---------------------");
 console.log("Date :", today.toLocaleDateString());
 console.log("_".repeat(42));
