@@ -38,3 +38,4 @@ console.log("Date :", today.toLocaleDateString());
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
+// test git in vscode
