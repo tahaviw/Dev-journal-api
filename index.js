@@ -1,6 +1,6 @@
 const fs = require("fs");
 const { v4: uuid } = require("uuid"); // similar to import v4 as uuid from "uuid"
-const today = new Date();
+const today = require("./getToday")
 // Path Module :
 const path = require("path");
 //insted of hardcoded path like :"./data/journal.txt"
@@ -34,7 +34,7 @@ process.on("uncaughtException", (err) => {
 
 console.log("     Welcome to Backend !");
 console.log("     ---------------------");
-console.log("Date :", today.toLocaleDateString());
+console.log("Date :", today);
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
