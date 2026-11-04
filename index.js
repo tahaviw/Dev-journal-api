@@ -23,7 +23,7 @@ fs.appendFile(path.join(__dirname, "data", "Reply.txt"), `\nThis Is the Reply`, 
 })
 
 // exit on uncaught errors (from Node Documentation)
-//process = key word representing the running program.
+//process = key word representing the running program
 process.on("uncaughtException", (err) => {
   // event listener like click ordoucle click
   console.error(`There was an uncaught error: ${err}`);
