@@ -34,7 +34,7 @@ process.on("uncaughtException", (err) => {
 
 console.log("     Welcome to Backend !");
 console.log("     ---------------------");
-console.log("Date :", today);
+console.log("Date :", today());
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
