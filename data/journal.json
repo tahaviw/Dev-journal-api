@@ -1,0 +1,14 @@
+[
+  {
+    "id": "<uuid>",
+    "title": "The Difficult Period",
+    "date": "4082-10-14",
+    "content": "The oil in the lantern is almost gone..."
+  },
+  {
+    "id": "<uuid>",
+    "title": "The Optimistic Period",
+    "date": "4083-05-03",
+    "content": "The glass in the cold frames is sweating..."
+  }
+]

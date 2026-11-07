@@ -6,7 +6,7 @@ const path = require("path");
 //insted of hardcoded path like :"./data/journal.txt"
 
 //                                                first parametre takes the Error
-//                                                                ⬇️
+//                                                                 V
 fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => {
   // utf8 turns Buffer into String
   // exemple of buffer : <Buffer 74 61 73 6b...>
@@ -16,8 +16,9 @@ fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => 
   console.log(data);
 },
 );
-
-fs.appendFile(path.join(__dirname, "data", "Reply.txt"), `\nThis Is the Reply`, (err) => {
+// use fs.appendFile() to add data without deleting everything
+//    V
+fs.writeFile(path.join(__dirname, "data", "Reply.txt"), `Last login : ${today()}`, (err) => {
   if (err) throw err;
   console.log("Writing Complete")
 })
@@ -38,4 +39,3 @@ console.log("Date :", today());
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
-// test git in vscode
