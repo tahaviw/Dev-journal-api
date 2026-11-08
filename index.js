@@ -39,3 +39,14 @@ console.log("Date :", today());
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
+
+
+try {
+
+  const jsonData = require('./data/journal.json');
+  console.log(jsonData);
+
+} catch (err) {
+  
+console.error("Error :", err);
+}
