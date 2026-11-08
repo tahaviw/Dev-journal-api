@@ -54,11 +54,15 @@ console.log("")
 try {
   
   const jsonData = require('./data/journal.json');
-  const StringJsonData = JSON.stringify(jsonData)
-console.log("StringJsonData",typeof(StringJsonData))
+  const stringJsonData = JSON.stringify(jsonData)
+console.log("stringJsonData",typeof(stringJsonData))
 console.log("")
-  const ParseJsonData = JSON.parse(StringJsonData)
-console.log("ParseJsonData:",typeof(ParseJsonData))
+const parseJsonData = JSON.parse(stringJsonData)
+console.log("parseJsonData:",typeof(parseJsonData))
+console.log("")
+console.log(Array.isArray(parseJsonData));
+console.log("")
+console.log(parseJsonData[0].title);
   
 } catch (err) {
   
