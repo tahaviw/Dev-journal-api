@@ -10,7 +10,10 @@ const path = require("path");
 fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => {
   // utf8 turns Buffer into String
   // exemple of buffer : <Buffer 74 61 73 6b...>
-  if (err) throw err;
+  if (err) {
+    console.error(err.message);
+    return;
+  }
   console.log("Todays Tasks:");
   console.log("");
   console.log(data);
@@ -19,34 +22,46 @@ fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => 
 // use fs.appendFile() to add data without deleting everything
 //    V
 fs.writeFile(path.join(__dirname, "data", "Reply.txt"), `Last login : ${today()}`, (err) => {
-  if (err) throw err;
+  if (err) {
+    console.error(err.message);
+    return;
+  }
   console.log("Writing Complete")
 })
 
 // exit on uncaught errors (from Node Documentation)
 //process = key word representing the running program
-process.on("uncaughtException", (err) => {
+
+/*process.on("uncaughtException", (err) => {
   // event listener like click ordoucle click
   console.error(`There was an uncaught error: ${err}`);
   process.exit(1); //Stop the program
-});
+});*/
 
 // Output
 
 console.log("     Welcome to Backend !");
-console.log("     ---------------------");
+console.log("     --------------------");
 console.log("Date :", today());
 console.log("_".repeat(42));
 console.log("ID: ", uuid());
 console.log("_".repeat(42));
 
-
+console.log("")
+console.log("Code:")
+console.log("====")
+console.log("")
 try {
-
+  
   const jsonData = require('./data/journal.json');
-  console.log(jsonData);
-
+  const StringJsonData = JSON.stringify(jsonData)
+console.log("StringJsonData",typeof(StringJsonData))
+console.log("")
+  const ParseJsonData = JSON.parse(StringJsonData)
+console.log("ParseJsonData:",typeof(ParseJsonData))
+  
 } catch (err) {
   
-console.error("Error :", err);
+  console.error("Error :", err);
 }
+console.log("")
