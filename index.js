@@ -41,16 +41,16 @@ fs.writeFile(path.join(__dirname, "data", "Reply.txt"), `Last login : ${today()}
 
 // Output
 
-console.log("     Welcome to Backend !");
-console.log("     --------------------");
+console.log("\x1b[34m%s\x1b[0m","     Welcome to Backend !");
+console.log("\x1b[34m%s\x1b[0m","     --------------------");
 console.log("Date :", today());
 console.log("_".repeat(42));
-console.log("ID: ", ID);
+console.log("\x1b[31m%s\x1b[0m","ID: ", ID);
 console.log("_".repeat(42));
 
 console.log("")
-console.log("Code:")
-console.log("====")
+console.log("\x1b[31m%s\x1b[0m","Code:")
+console.log("\x1b[31m%s\x1b[0m","====")
 console.log("")
 try {
   
