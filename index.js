@@ -3,6 +3,7 @@ const { v4: uuid } = require("uuid"); // similar to import v4 as uuid from "uuid
 const today = require("./getToday")
 // Path Module :
 const path = require("path");
+const ID = uuid()
 //insted of hardcoded path like :"./data/journal.txt"
 
 //                                                first parametre takes the Error
@@ -21,7 +22,7 @@ fs.readFile(path.join(__dirname, "data", "journal.txt"), "utf8", (err, data) => 
 );
 // use fs.appendFile() to add data without deleting everything
 //    V
-fs.writeFile(path.join(__dirname, "data", "Reply.txt"), `Last login : ${today()}`, (err) => {
+fs.writeFile(path.join(__dirname, "data", "Reply.txt"), `Last login : ${today()} \nId: ${ID}`, (err) => {
   if (err) {
     console.error(err.message);
     return;
@@ -44,7 +45,7 @@ console.log("     Welcome to Backend !");
 console.log("     --------------------");
 console.log("Date :", today());
 console.log("_".repeat(42));
-console.log("ID: ", uuid());
+console.log("ID: ", ID);
 console.log("_".repeat(42));
 
 console.log("")
