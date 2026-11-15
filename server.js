@@ -1,6 +1,14 @@
 const http = require("http")
 const PORT = process.env.PORT;
 
+// Temp Demo
+
+const users =[
+    {id:1, name:"taha"},
+    {id:2, name:"yussef"},
+    {id:3, name:"ilias"},
+]
+
 const server = http.createServer((req, res) => {
     console.log(req.method);
     console.log(req.url);
