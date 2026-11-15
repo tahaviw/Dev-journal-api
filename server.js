@@ -16,29 +16,38 @@ const server = http.createServer((req, res) => {
     try {
         let data = ""
         let statusCode = 200
+        let contentType = 'text/plain'
         if (req.method === 'GET') {
             // Switch statement replace IF statement (same)
             switch (req.url) {
                 case '/':
                     data = 'Welcome:\n Homepage'
+                    contentType = 'text/plain'
                     break;
                 case '/about':
                     data = 'About:\n This Backend project is to implement\n my Knowledge and current learning'
+                    contentType = 'text/plain'
                     break;
+                case '/api/users':
+                    data = JSON.stringify(users)
+                    contentType = 'application/json'
+                break;
                 default:
                     data = 'Not Found'
                     statusCode = 404
+                    contentType = 'text/plain'
                         ;
             }
         } else {
             // Methode not allowed => 405
             data = 'Methode Not allowed'
             statusCode = 405
+            contentType = 'text/plain'
             console.log('Only GET methode is accepted')
         }
                     // combines the statusCode to send & Content type (ex: html, plain, txt ..)
                     //           V
-                    res.writeHead(statusCode, { 'content-type': 'text/plain' })
+                    res.writeHead(statusCode, { 'content-type': contentType })
                     res.end(data)
     } catch (error) {
         // SERVER Error 500
