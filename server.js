@@ -7,8 +7,6 @@ const users =[
     {id:1, name:"taha"},
     {id:2, name:"yussef"},
     {id:3, name:"ilias"},
-    {id:4, name:"mehdi"},
-    {id:5, name:"otman"},
 ]
 
 const server = http.createServer((req, res) => {
