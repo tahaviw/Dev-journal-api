@@ -36,10 +36,16 @@ const server = http.createServer((req, res) => {
                     break;
                 case `/api/users/${ID}`:
                     let usr = users.find(x => x.id === ID)
+                if (usrs) {
                     console.log(usr)
                     data = JSON.stringify(usr)
                     contentType = 'application/json'
                     break;
+                }else {
+                    data = 'User Not Found'
+                    statusCode = 404
+                    contentType = 'text/plain'
+                }    
                 default:
                     data = 'Not Found'
                     statusCode = 404
