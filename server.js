@@ -36,15 +36,18 @@ const server = http.createServer((req, res) => {
                     break;
                 case `/api/users/${ID}`:
                     let usr = users.find(x => x.id === ID)
+                    if (Number.isNaN(ID)) {
+                        console.log("request invalid only numbers are allowed")
+                        data = 'request Invalid'
+                        statusCode = 400
+                        contentType = 'text/plain'
+                        break;
+                    }
                     if (usr) {
                         console.log(usr)
                         data = JSON.stringify(usr)
                         contentType = 'application/json'
-                    }else if (Number.isNaN(ID)){
-                        data = 'request Invalid'
-                        statusCode = 400
-                        contentType = 'text/plain'
-                    }else {
+                    } else {
                         data = 'User Not Found'
                         statusCode = 404
                         contentType = 'text/plain'
