@@ -1,4 +1,4 @@
-#Dev Journal API
+# Dev Journal API
 
 A backend learning project focused on building a REST API with Node.js.
 
