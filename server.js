@@ -16,9 +16,9 @@ const server = http.createServer((req, res) => {
 
     try {
         // Default response values
-        let data = ""                 // Body content to send back
-        let statusCode = 200          // HTTP status code (200 = OK by default)
-        let contentType = 'text/plain' // MIME type of the response
+        let data = ""                 
+        let statusCode = 200         
+        let contentType = 'text/plain'
 
         // Only handle GET requests
         if (req.method === 'GET') {
@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
             // parts[1] === 'api' : second segment is "api"
             // parts[2] === 'users': third segment is "users"
             // Number.isNaN(ID)   : the ID is not a valid number (e.g. "/api/users/abd")
-            if (parts.length > 3 && parts[1] === 'api' && parts[2] === 'users' && Number.isNaN(ID)) {
+            if (req.url.match(/\/api\/users\/([0-9]+)/) && (Number.isNaN(ID) || ID <= 0 || !Number.isInteger(ID)) ) {
                 console.log("request invalid only numbers are allowed")
                 data = 'request Invalid'
                 statusCode = 400     // 400 Bad Request
@@ -51,12 +51,11 @@ const server = http.createServer((req, res) => {
                         data = 'About:\n This Backend project is to implement\n my Knowledge and current learning'
                         contentType = 'text/plain'
                         break;
-                    case `/api/users`:
-                        // Return ALL users as JSON
-                        data = JSON.stringify(users)
-                        contentType = 'application/json'
-                        break;
-                    case `/api/users/${ID}`:
+                        case `/api/users/`:
+                            // Return ALL users as JSON
+                            data = 'Type a specific User'
+                            break;
+                        case `/api/users/${ID}`:
                         // Return ONE user by ID
                         let usr = users.find(x => x.id === ID)
                         if (usr) {
