@@ -9,18 +9,19 @@ const users = [
   { id: 3, name: "ilias" },
 ];
 
+
 // Create the HTTP server
 const server = http.createServer((req, res) => {
   // Log the incoming request method (GET, POST, etc.) and URL path
   console.log(req.method);
   console.log(req.url);
-
+  
   try {
     // Default response values
     let data = "";
     let statusCode = 200;
     let contentType = "text/plain";
-
+    
     // Only handle GET requests
     if (req.method === "GET") {
       // Split the URL by "/" to examine path segments
@@ -40,28 +41,31 @@ const server = http.createServer((req, res) => {
       } else if (req.url === '/api/users') {
         data = JSON.stringify(users)
         statusCode = 200
-      } else {
+      }else if (req.url.match(/\/api\/users\//)){
+          if (Number.isNaN(ID) || ID <= 0 || !Number.isInteger(ID)) {
+            console.log("request invalid only numbers are allowed")
+            data = 'request Invalid'
+            statusCode = 400     // 400 Bad Request
+            contentType = 'text/plain'
+          } else if (req.url.match(/\/api\/users\/([0-9]+)/)) {
+            let usr = users.find(x => x.id === ID)
+            if (usr) {
+              console.log(usr)
+              // User found: send their data as JSON
+              data = JSON.stringify(usr)
+              contentType = 'application/json'
+            }else {
+            // User not found in the array
+            data = 'User Not Found'
+            console.log('No such a user Id')
+            statusCode = 404   // 404 Not Found
+            contentType = 'text/plain'
+          }
+          } 
+      }else {
         // Any other URL that doesn't match above cases
         data = 'Not Found'
         statusCode = 404       // 404 Not Found
-        contentType = 'text/plain'
-      }
-      
-      if (req.url.match(/\/api\/users\//) && (Number.isNaN(ID) || ID <= 0 || !Number.isInteger(ID))) {
-        console.log("request invalid only numbers are allowed")
-        data = 'request Invalid'
-        statusCode = 400     // 400 Bad Request
-        contentType = 'text/plain'
-      } else if (req.url.match(/\/api\/users\/([0-9]+)/)) {
-        let usr = users.find(x => x.id === ID)
-        // User found: send their data as JSON
-        console.log(usr)
-        data = JSON.stringify(usr)
-        contentType = 'application/json'
-      } else {
-        // User not found in the array
-        data = 'User Not Found'
-        statusCode = 404   // 404 Not Found
         contentType = 'text/plain'
       }
 
